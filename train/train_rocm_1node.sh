@@ -52,7 +52,7 @@ model_path=path_to_model_weight
 tokenizer_path=../models
 train_data_file=example_data.jsonl
 
-# ds_config_file=ds_zero2_no_offload.json
+# ds_config_file=ds_zero2_no_offload_rocm.json
 # ds_config_file=ds_zero3_no_offload.json
 ds_config_file=ds_zero3_offload_no_auto.json
 
@@ -104,10 +104,10 @@ deepspeed train.py \
     --model_max_length 4096 \
     --max_seq_length 4096 \
     --moe_topk 1 \
-    --num_experts 2 \
+    --num_experts 16 \
     --num_attention_heads 80 \
     --num_key_value_heads 8 \
-    --num_layers 4 \
+    --num_layers 64 \
     --cla_share_factor 2 \
     --use_cla \
     --use_mixed_mlp_moe \
