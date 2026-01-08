@@ -53,8 +53,8 @@ tokenizer_path=../models
 train_data_file=example_data.jsonl
 
 # ds_config_file=ds_zero2_no_offload_rocm.json
-# ds_config_file=ds_zero3_no_offload.json
-ds_config_file=ds_zero3_offload_no_auto.json
+ds_config_file=ds_zero3_no_offload.json
+# ds_config_file=ds_zero3_offload_no_auto.json
 
 output_path=output
 
@@ -85,7 +85,6 @@ deepspeed train.py \
     --overwrite_output_dir \
     --per_device_train_batch_size 1 \
     --gradient_accumulation_steps 1 \
-    --gradient_checkpointing \
     --lr_scheduler_type cosine_with_min_lr \
     --logging_steps 1 \
     --max_steps 200 \
@@ -114,3 +113,4 @@ deepspeed train.py \
     --num_shared_expert 1 \
     --use_qk_norm \
     --bf16 2>&1 | tee ${log_file}
+    # --gradient_checkpointing \
